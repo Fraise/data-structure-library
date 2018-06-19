@@ -3,10 +3,20 @@
 
 #include "stack.h"
 
+/*
+ *  This function initialize the stack.
+ *  It is not really needed but kept for coherence of the library.
+ */
+
 stack_t* stack_init()
 {
     return NULL;
 }
+
+
+/*
+ *  This function free all the remaining nodes in the stack.
+ */
 
 void stack_delete(stack_t *head)
 {
@@ -14,6 +24,7 @@ void stack_delete(stack_t *head)
     {
         stack_node_t *prev_node;
 
+        /* Go through all the remaining nodes */
         while (head->next != NULL)
         {
             free(head->value);
@@ -28,11 +39,21 @@ void stack_delete(stack_t *head)
     }
 }
 
+/*
+ *  This function initialize a node with a pointer to the data it points to.
+ *  The data it points to needs to be malloc'ed first!
+ */
+
 void stack_node_create(stack_node_t *new_node, void *data_ptr)
 {
     new_node->value = data_ptr;
     new_node->next = NULL;
 }
+
+
+/*
+ *  This function push a node on the stack.
+ */
 
 int stack_push(stack_node_t *pushed_node, stack_t **head)
 {
@@ -48,8 +69,12 @@ int stack_push(stack_node_t *pushed_node, stack_t **head)
     return 0;
 }
 
-//pop only free the node popped from the stack, not it's value.
-//It needs to be freed after accessing it
+
+/*
+ *  This function pop a node from the stack.
+ *  pop only free the node popped from the stack, not it's value.
+ *  It needs to be freed after accessing it.
+ */
 
 int stack_pop(stack_node_t *popped_node, stack_node_t **head)
 {
@@ -66,6 +91,11 @@ int stack_pop(stack_node_t *popped_node, stack_node_t **head)
 
     return 0;
 }
+
+
+/*
+ *  This function peek the node on top of the stack.
+ */
 
 void stack_peek(stack_node_t *peeked_node, stack_t *head)
 {

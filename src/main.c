@@ -18,7 +18,7 @@ void print_int_stack(stack_node_t* head)
 
 int main(void)
 {
-    stack_t* stack_head = stack_init();
+    stack_t *stack_head = stack_init();
 
     for (int i = 0; i < 50; i ++)
     {
