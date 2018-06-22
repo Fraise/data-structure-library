@@ -1,26 +1,30 @@
 CC=gcc
 
 ODIR=obj
-IDIR=headers
+IDIR=include
 SDIR=src
 
-IFLAGS=-Iheaders
+IFLAGS=-I$(IDIR)
 CFLAGS=-Wall
-DEPS=stack.h
 
-_DEPS = stack.h
+_DEPS = stack.h queue.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = main.o stack.o
+_OBJ = main.o stack.o queue.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: $(SDIR)/%.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS) $(IFLAGS)
 
-data-struct-test: $(OBJ)
+data-struct-sample: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS)
 
 .PHONY: clean
 
 clean:
 	rm -f obj/*.o
+
+.PHONY: clean-all
+
+clean-all:
+	rm -f obj/*.o && rm -f data-struct-sample

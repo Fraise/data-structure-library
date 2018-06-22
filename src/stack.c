@@ -57,8 +57,9 @@ void stack_node_create(stack_node_t *new_node, void *data_ptr)
 
 int stack_push(stack_node_t *pushed_node, stack_t **head)
 {
-    stack_node_t* new_head = (stack_node_t*) malloc(sizeof(stack_node_t));
+    stack_node_t *new_head = (stack_node_t*) malloc(sizeof(stack_node_t));
 
+    /* Check if the malloc worked */
     if (new_head == NULL) return 1;
 
     new_head->next = *head;
@@ -76,7 +77,7 @@ int stack_push(stack_node_t *pushed_node, stack_t **head)
  *  It needs to be freed after accessing it.
  */
 
-int stack_pop(stack_node_t *popped_node, stack_node_t **head)
+int stack_pop(stack_node_t *popped_node, stack_t **head)
 {
     if (*head == NULL) return 1;
 
