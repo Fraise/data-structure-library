@@ -10,7 +10,7 @@ CFLAGS=-Wall
 _DEPS = stack.h queue.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = main.o stack.o queue.o
+_OBJ = samples.o stack.o queue.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: $(SDIR)/%.c $(DEPS)

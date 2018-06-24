@@ -52,7 +52,7 @@ void stack_node_create(stack_node_t *new_node, void *data_ptr)
 
 
 /*
- *  This function push a node on the stack.
+ *  This function pushes a node on the stack.
  */
 
 int stack_push(stack_node_t *pushed_node, stack_t **head)
@@ -73,7 +73,7 @@ int stack_push(stack_node_t *pushed_node, stack_t **head)
 
 /*
  *  This function pop a node from the stack.
- *  pop only free the node popped from the stack, not it's value.
+ *  pop only free the node popped from the stack, not its value.
  *  It needs to be freed after accessing it.
  */
 
@@ -98,8 +98,12 @@ int stack_pop(stack_node_t *popped_node, stack_t **head)
  *  This function peek the node on top of the stack.
  */
 
-void stack_peek(stack_node_t *peeked_node, stack_t *head)
+int stack_peek(stack_node_t *peeked_node, stack_t *head)
 {
+    if (head == NULL || head->next == NULL) return 1;
+
     peeked_node->next = head->next;
     peeked_node->value = head->value;
+
+    return 0;
 }
