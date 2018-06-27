@@ -44,7 +44,7 @@ void queue_delete(queue_t *queue)
         free(prev_node);
     }
 
-
+    /* Free the last node */
     free(queue->end->value);
     free(queue->end);
 

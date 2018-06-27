@@ -96,7 +96,7 @@ void queue_test()
 
 int main(void)
 {
-    queue_test();
+    stack_test();
 
     return 0;
 }

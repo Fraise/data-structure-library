@@ -20,23 +20,24 @@ stack_t* stack_init()
 
 void stack_delete(stack_t *head)
 {
-    if (head != NULL)
+    if (head == NULL) return;
+
+    stack_node_t *prev_node;
+
+    /* Go through all the remaining nodes */
+    while (head->next != NULL)
     {
-        stack_node_t *prev_node;
+        free(head->value);
 
-        /* Go through all the remaining nodes */
-        while (head->next != NULL)
-        {
-            free(head->value);
+        prev_node = head;
+        head = head->next;
 
-            prev_node = head;
-            head = head->next;
-
-            free(prev_node);
-        }
-
-        free(head);
+        free(prev_node);
     }
+
+    /* Free the last node */
+    free(head->value);
+    free(head);
 }
 
 /*
